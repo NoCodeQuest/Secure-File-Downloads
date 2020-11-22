@@ -1,0 +1,56 @@
+<script>
+/* *********************************************
+	On form button click to download a file, get
+  the latest JWT from MemberStack.
+********************************************* */
+function setJwtToken(downloadFileForm){
+  
+  // get the MemberStack JWT
+  const jwt = MemberStack.getToken();
+  
+  // filter for the jwt hidden form field by name
+  let jwtField = downloadFileForm.querySelector('[name="jwt"]');
+  
+  // If the hidden form field already exists (previous click)
+  // then reassign it's value. Otherwise, this is the first time
+  // clicking it so create the hidden form field and assign the
+  // jwt as it's value.
+  if(jwtField){
+  	jwtField.value = jwt;	
+  }else{
+    // add new
+    let inputJwt = document.createElement("input");
+    inputJwt.setAttribute("type", "hidden");
+    inputJwt.setAttribute("name", "jwt");
+    inputJwt.setAttribute("value", jwt);
+    downloadFileForm.appendChild(inputJwt);
+  }  
+}
+
+// capture all click events on this page
+// filter for clicks from input form fields
+// more filtering in the setJwtToken function
+document.addEventListener('click', e => {
+  if (e.target.matches('input')) {
+  	setJwtToken(e.target.parentElement);  
+  }
+});
+
+/* *********************************************
+	Find all of the forms and add a hidden field
+  to send the failure page url on form submit.
+********************************************* */
+
+// find all download file forms on this page
+let downloadFileForms = document.getElementsByClassName('download-file-form');
+
+// loop each and set the redirect to page on failure
+for (var i=0; i < downloadFileForms.length; i++) {
+  redirectTo = window.location.href.replace('lessons', '404');
+  let inputRedirectTo = document.createElement("input");
+	inputRedirectTo.setAttribute("type", "hidden");
+	inputRedirectTo.setAttribute("name", "redirect_to");
+	inputRedirectTo.setAttribute("value", redirectTo);
+	downloadFileForms[i].appendChild(inputRedirectTo);
+}
+</script>
