@@ -50,3 +50,4 @@ module.exports.handler = (event, context, callback) => {
 
 	})().catch(console.error);
 };
+
