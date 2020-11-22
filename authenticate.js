@@ -1,10 +1,7 @@
-// ----------------------------------------------------------------
-//
-// 												~ NoCodeQuest.com ~
-//
-//								"Add some muscle to your Webflow site."
-//
-// ----------------------------------------------------------------
+// ----------------------------------------
+// ~ NoCodeQuest.com ~
+// "Add some muscle to your Webflow site."
+// ----------------------------------------
 'use strict';
 const jsonwebtoken = require('jsonwebtoken');
 const fetch = require('node-fetch');
