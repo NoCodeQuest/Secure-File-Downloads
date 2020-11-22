@@ -44,9 +44,11 @@ document.addEventListener('click', e => {
 // find all download file forms on this page
 let downloadFileForms = document.getElementsByClassName('download-file-form');
 
+// page to redirect to
+var redirectTo = window.location.href.replace('lessons', '404');
+	
 // loop each and set the redirect to page on failure
 for (var i=0; i < downloadFileForms.length; i++) {
-  redirectTo = window.location.href.replace('lessons', '404');
   let inputRedirectTo = document.createElement("input");
 	inputRedirectTo.setAttribute("type", "hidden");
 	inputRedirectTo.setAttribute("name", "redirect_to");
