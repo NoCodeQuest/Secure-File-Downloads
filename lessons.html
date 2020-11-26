@@ -6,7 +6,7 @@
 function setJwtToken(downloadFileForm){
   
   // get the MemberStack JWT
-  const jwt = MemberStack.getToken();
+  const jwt = MemberStack.getToken() || '';
   
   // filter for the jwt hidden form field by name
   let jwtField = downloadFileForm.querySelector('[name="jwt"]');
